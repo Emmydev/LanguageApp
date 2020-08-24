@@ -1,0 +1,200 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="LanguageSystem.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%:Page.Title%> - Admin Page-</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+     <!-- Favicons -->
+  <link href="landingassets/img/favi.png" rel="icon"/>
+
+    <script src= '<%=ResolveUrl("assets/js/jquery.min.js")%>'></script>
+
+    <!-- start: CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/datepicker.css" rel="stylesheet" />
+  <link href="assets/css/style.min.css" rel="stylesheet"/>
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/css/retina.min.css" rel="stylesheet" />
+    <link href="assets/css/chosen.css" rel="stylesheet" />
+   
+    <link href="assets/css/font.min.css" rel="stylesheet" />
+    <link href="assets/css/jquery-ui.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-theme.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+              <%-- <asp:ScriptManager runat="server"></asp:ScriptManager>--%>
+        <!-- start: Header -->
+
+        <header class="navbar">
+            <div class="container">
+                <img src="landingpage/img/logo.png" alt="Okun Language Logo" style="padding-top:10px; padding-bottom:0px" />
+                <button class="navbar-toggle btn btn-success" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+                    <strong>MENU</strong>
+                </button>
+
+                <div class="nav-no-collapse header-nav">
+                    <ul class="nav navbar-nav pull-left">
+                       
+                        <li class="dropdown hidden-xs">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                               
+
+                            </a>
+                        </li>
+
+                        
+                    </ul>
+
+                    <img src="assets/img/logo.png" alt="" title="" style="padding-top:10px; padding-bottom:10px;"/>                    
+                    <ul class="nav navbar-nav pull-right" style="padding-top:10px;">
+                          <li class="hidden-xs pull-left" style="margin-right:40px; margin-top:8px">
+                             <i class="fa fa-bell fa-fw" style="color:#808080"></i><i class="fa fa-caret-down"></i>
+                            </li>
+
+                         <li class="dropdown hidden-xs">
+                              <img src="../assets/img/default.gif" class="img-avatar"  /> 
+                            </li>
+                        <!-- start: User Dropdown -->
+                        <li class="dropdown hidden-xs">
+
+                          <asp:Label ID="UsernameLabel" CssClass="label user-label" style="color:#00A651" runat="server"><%: Context.User.Identity.GetUserName()  %>  </asp:Label>
+                        </li>
+                        <li class="">
+                            <span id="logout" class="btn btn-sm btn-success btn-logout"><i class="fa fa-sign-out"></i>&nbsp; <b>Logout</b></span>
+                            
+                        </li>
+                        <!-- end: User Dropdown -->
+                            </ul>
+                </div>
+                <!-- end: Header Menu -->
+
+            </div>
+        </header>
+       
+
+        <!-- start: Ticker bar -->
+        <header class="ticker-bar ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end: Tickr -->
+
+        <!-- start: container-->
+        <div class="container">
+            <div class="row">
+                <!-- start: Main Menu -->
+                <div id="sidebar-left" class="col-lg-3 col-md-9 col-sm-1">
+                                                                                         
+                    <div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
+                        <ul class="nav nav-tabs nav-stacked main-menu">
+                            <li class="text-center">
+                                <asp:Image ID="imgLogo" runat="server"  ImageUrl="~/assets/img/default.gif" Width="100" style="border-radius:50%" ClientIDMode="Static"   />
+                             
+                               
+                            </li>
+                             <li class="text-center" style="background:#3276b1;color:#fff; padding:10px; margin:10px 0">
+                               <strong>
+                                   <asp:Label ID="lblCoyName" Text="Admin Menu" runat="server" ></asp:Label>
+                               </strong>  
+                                 </li>
+                            <%--<li class="" style="background: #F5F5F5;color:#00A651; padding:10px; margin:10px 0">
+                                   <a href="Dashboard.aspx"><span class="fa fa-dashboard"></span><asp:Label ID="Label1" Text=" Dashboard" runat="server" ></asp:Label></a>
+                                 </li>--%>
+                            <li class="" style="background: #F5F5F5;color:#00A651; padding:10px; margin:10px 0">
+                                   <a href="AddLanguage.aspx"><span class="fa fa-book"></span><asp:Label ID="Label2" Text=" Add Language" runat="server" ></asp:Label></a>
+                                 </li>
+                            <li class="" style="background: #F5F5F5; color:#00A651; padding:10px; margin:10px 0">
+                                   <a href="ManageLanguages.aspx"><span class="fa fa-list"> </span><asp:Label ID="Label3" Text=" Manage Languages" runat="server" ></asp:Label></a>
+                                 </li>
+                            <li class="" style="background: #F5F5F5; color:#00A651; padding:10px; margin:10px 0">
+                                   <a href="index.aspx"><span class="fa fa-bullhorn"></span><asp:Label ID="Label4" Text=" Home Page" runat="server" ></asp:Label></a>
+                                 </li>
+                          <%-- <%= menuGenerator %>--%>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end: Main Menu -->
+                <div id="content" class="col-lg-9 col-md-9 col-sm-11" style="min-height: 200px;">
+                    <!-- start: Content -->
+                    <asp:ContentPlaceHolder ID="mainContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <!-- end: Content -->
+                </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/container-->
+        <div class="clearfix"></div>
+        <footer>
+           <p style="text-align:center;"><span style="float:right" class="auto-style1"><%--<asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" BackColor="#1C2B4B" BorderColor="#1C2B4B" ForeColor="White"/>--%></span>&copy; <%: DateTime.Now.Year %> All Rights Reserved -<strong>Okun Language System</strong></p>
+            
+        </footer>
+
+        <!--Logout Modal-->
+        <div class="modal fade" id="confirmLogoutModal" tabindex="-1" role="dialog" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title" id="confirmLogoutModalLabel"><b>Logout ?</b></h3>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to LogOut ?
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+                        <asp:LinkButton CssClass="btn btn-danger" CausesValidation="false" runat="server" ID="logoutBtn" OnClick="logoutBtn_Click" ><i class="fa fa-sign-out"></i> Log Out</asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <script type="text/javascript" src='<%:ResolveUrl("assets/charts/highcharts.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/jquery-migrate.min.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/bootstrap.min.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/jquery-custom.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/custom.min.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/core.min.js")%>'></script>
+        <script type="text/javascript" src='<%:ResolveUrl("assets/js/jquery-ui.js")%>'></script>
+          <script type="text/javascript" src='<%:ResolveUrl("assets/js/jquery.ui.autocomplete.scroll.min.js")%>'></script>
+       
+
+        <script>
+            $(document).ready(function () {
+
+                $("#logout").click(function () {
+                    $("#confirmLogoutModal").modal({ backdrop: 'static' });
+                });
+
+
+            });
+
+
+        </script>
+
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
